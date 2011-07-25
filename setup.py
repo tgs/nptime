@@ -9,7 +9,7 @@ setup(
         description = 'Non-pedantic replacement for datetime.time',
         license = 'LICENSE.txt',
         keywords = 'time datetime timedelta',
-        packages = 'nptime',
+        py_modules = ['nptime'],
 
         tests_require = ['Nose'],
         )

@@ -8,9 +8,9 @@ time will it be, 24 hours from now" has a lot of corner cases,
 including daylight savings time, leap seconds, historical timezone
 changes, leap years, and so on. But sometimes you really *do* need the
 simple case.  Sometimes the perfect is the enemy of the good.  And
-that's why you have this module.  This module will allow you to
-coccoon yourself in the comforting illusion that, in 24 hours, it will
-be the same time as it is right now.
+that's why you have this module.  This module will allow you to cocoon
+yourself in the comforting illusion that, in 24 hours, it will be the
+same time as it is right now.
 
 And what freedom this illusion gives you!  You can add a
 ``datetime.timedelta`` object to an ``nptime`` object, and it works!

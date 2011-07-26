@@ -6,6 +6,7 @@ setup(
         version = __release__,
         author = 'Thomas Grenfell Smith',
         author_email = 'thomathom@gmail.com',
+        url = 'https://github.com/tgs/nptime',
         description = 'Non-pedantic replacement for datetime.time',
         long_description = open('README.rst').read(),
         license = 'LICENSE.txt',

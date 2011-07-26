@@ -2,5 +2,5 @@
 
 __version__ = '0.3'
 # release is the one with 'dev' on the end
-__release__ = '0.3dev'
+__release__ = '0.3'
 

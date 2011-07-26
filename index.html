@@ -1,0 +1,147 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>nptime v0.1 documentation</title>
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     '0.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="None" href="#" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li><a href="#">nptime v0.1 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="module-nptime">
+<span id="welcome-to-nptime-s-documentation"></span><h1>Welcome to nptime&#8217;s documentation!<a class="headerlink" href="#module-nptime" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="non-pedantic-time">
+<h2>Non-Pedantic Time<a class="headerlink" href="#non-pedantic-time" title="Permalink to this headline">¶</a></h2>
+<p>Python&#8217;s <a class="reference external" href="http://docs.python.org/library/datetime.html#module-datetime" title="(in Python v2.7)"><tt class="xref py py-mod docutils literal"><span class="pre">datetime</span></tt></a> module has many uses, but it has a difficulty: you
+can&#8217;t do any arithmetic with <a class="reference external" href="http://docs.python.org/library/datetime.html#datetime.time" title="(in Python v2.7)"><tt class="xref py py-class docutils literal"><span class="pre">datetime.time</span></tt></a>.  Only with
+<a class="reference external" href="http://docs.python.org/library/datetime.html#datetime.datetime" title="(in Python v2.7)"><tt class="xref py py-class docutils literal"><span class="pre">datetime.datetime</span></tt></a>.  Now, there are good reasons for this:  &#8220;What time
+will it be, 24 hours from now&#8221; has a lot of corner cases, including daylight
+savings time, leap seconds, historical timezone changes, leap years, and so on.
+But sometimes you really <em>do</em> need the simple case.  Sometimes the perfect is
+the enemy of the good.  And that&#8217;s why you have this module.  This module will
+allow you to cocoon yourself in the comforting illusion that, in 24 hours, it
+will be the same time as it is right now.</p>
+<p>And what freedom this illusion gives you!  You can add a
+<a class="reference external" href="http://docs.python.org/library/datetime.html#datetime.timedelta" title="(in Python v2.7)"><tt class="xref py py-class docutils literal"><span class="pre">datetime.timedelta</span></tt></a> object to an <a class="reference internal" href="#module-nptime" title="nptime"><tt class="xref py py-mod docutils literal"><span class="pre">nptime</span></tt></a> object, and it works!
+It will cycle around 24 hours, like modular arithmetic.  You can ask &#8220;what time
+comes 1 day and 36 minutes after 12:24 pm?&#8221; and it will let you know: 1:00 pm.
+How lovely!</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">nptime</span> <span class="kn">import</span> <span class="n">nptime</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">timedelta</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">afternoon</span> <span class="o">=</span> <span class="n">nptime</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">24</span><span class="p">)</span> <span class="o">+</span> <span class="n">timedelta</span><span class="p">(</span><span class="n">days</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">minutes</span><span class="o">=</span><span class="mi">36</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">afternoon</span>
+<span class="go">nptime(13, 0)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">str</span><span class="p">(</span><span class="n">afternoon</span><span class="p">)</span>
+<span class="go">&#39;13:00:00&#39;</span>
+</pre></div>
+</div>
+<p>You can also ask &#8220;How long is it between 9:00 AM and 5:00 PM?  It sure
+feels like a million years!&#8221;</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">workday</span> <span class="o">=</span> <span class="n">nptime</span><span class="p">(</span><span class="n">hour</span><span class="o">=</span><span class="mi">17</span><span class="p">)</span> <span class="o">-</span> <span class="n">nptime</span><span class="p">(</span><span class="n">hour</span><span class="o">=</span><span class="mi">9</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">workday</span>
+<span class="go">datetime.timedelta(0, 28800)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="n">workday</span>
+<span class="go">8:00:00</span>
+</pre></div>
+</div>
+<p>Nope, only 8 hours, how strange.  Anyway, please use this module.  It will
+be convenient.  But don&#8217;t use it when talking about concrete time, time in
+a particular place, or anything like that.  In fact, it doesn&#8217;t even notice
+tzinfo objects right now.  Good luck.</p>
+<dl class="class">
+<dt id="nptime.nptime">
+<em class="property">class </em><tt class="descclassname">nptime.</tt><tt class="descname">nptime</tt><a class="headerlink" href="#nptime.nptime" title="Permalink to this definition">¶</a></dt>
+<dd><p>nptime - a non-pedantic time object</p>
+<p>Inherits from <a class="reference external" href="http://docs.python.org/library/datetime.html#datetime.time" title="(in Python v2.7)"><tt class="xref py py-class docutils literal"><span class="pre">datetime.time</span></tt></a>.  You can&#8217;t do arithmetic with that class,
+but with <cite>nptime</cite> you can:</p>
+<ul class="simple">
+<li>Add a <a class="reference external" href="http://docs.python.org/library/datetime.html#datetime.timedelta" title="(in Python v2.7)"><tt class="xref py py-class docutils literal"><span class="pre">datetime.timedelta</span></tt></a> to an <a class="reference internal" href="#module-nptime" title="nptime"><tt class="xref py py-class docutils literal"><span class="pre">nptime</span></tt></a> (commutative)</li>
+<li>Subtract a <cite>timedelta</cite> from an <cite>nptime</cite></li>
+<li>Subtract an <cite>nptime</cite> from another <cite>nptime</cite></li>
+</ul>
+<dl class="classmethod">
+<dt id="nptime.nptime.from_time">
+<em class="property">classmethod </em><tt class="descname">from_time</tt><big>(</big><em>other</em><big>)</big><a class="headerlink" href="#nptime.nptime.from_time" title="Permalink to this definition">¶</a></dt>
+<dd><p>Construct an <a class="reference internal" href="#module-nptime" title="nptime"><tt class="xref py py-class docutils literal"><span class="pre">nptime</span></tt></a> object from a <a class="reference external" href="http://docs.python.org/library/datetime.html#datetime.time" title="(in Python v2.7)"><tt class="xref py py-class docutils literal"><span class="pre">datetime.time</span></tt></a></p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">This <em>ignores</em> the <a class="reference external" href="http://docs.python.org/library/datetime.html#datetime.tzinfo" title="(in Python v2.7)"><tt class="xref py py-class docutils literal"><span class="pre">datetime.tzinfo</span></tt></a> that may be part
+of the <cite>time</cite> object.</p>
+</div>
+</dd></dl>
+
+<dl class="classmethod">
+<dt id="nptime.nptime.from_timedelta">
+<em class="property">classmethod </em><tt class="descname">from_timedelta</tt><big>(</big><em>other</em><big>)</big><a class="headerlink" href="#nptime.nptime.from_timedelta" title="Permalink to this definition">¶</a></dt>
+<dd><p>Construct an <a class="reference internal" href="#module-nptime" title="nptime"><tt class="xref py py-class docutils literal"><span class="pre">nptime</span></tt></a> object from a <a class="reference external" href="http://docs.python.org/library/datetime.html#datetime.timedelta" title="(in Python v2.7)"><tt class="xref py py-class docutils literal"><span class="pre">datetime.timedelta</span></tt></a></p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" size="18" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li><a href="#">nptime v0.1 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2011, Thomas Grenfell Smith.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.0.5.
+    </div>
+  </body>
+</html>

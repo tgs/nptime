@@ -43,9 +43,7 @@ a particular place, or anything like that.  In fact, it doesn't even notice
 :class:`datetime.tzinfo` objects right now.  Good luck.
 
 .. note:: 
-    You can find the newest version at https://github.com/tgs/nptime
-
-    You can find online documentation at http://tgs.github.com/nptime/
+    You can find the newest version at https://github.com/tgs/nptime .  You can find online documentation at http://tgs.github.com/nptime/ .
 
 """
 

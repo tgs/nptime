@@ -51,7 +51,7 @@ class nptime(time):
     """nptime - a non-pedantic time object
     
     Inherits from :class:`datetime.time`.  You can't do arithmetic with that class,
-    but with `nptime` you can:
+    but with ``nptime`` you can:
 
     * Add a :class:`datetime.timedelta` to an :class:`nptime` (commutative)
     * Subtract a ``timedelta`` from an ``nptime``

@@ -37,10 +37,8 @@
         <div class="bodywrapper">
           <div class="body">
             
-  <div class="section" id="module-nptime">
-<span id="welcome-to-nptime-s-documentation"></span><h1>Welcome to nptime&#8217;s documentation!<a class="headerlink" href="#module-nptime" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="non-pedantic-time">
-<h2>Non-Pedantic Time<a class="headerlink" href="#non-pedantic-time" title="Permalink to this headline">¶</a></h2>
+  <span class="target" id="module-nptime"></span><div class="section" id="non-pedantic-time">
+<h1>Non-Pedantic Time<a class="headerlink" href="#non-pedantic-time" title="Permalink to this headline">¶</a></h1>
 <p>Python&#8217;s <a class="reference external" href="http://docs.python.org/library/datetime.html#module-datetime" title="(in Python v2.7)"><tt class="xref py py-mod docutils literal"><span class="pre">datetime</span></tt></a> module has many uses, but it has a difficulty: you
 can&#8217;t do any arithmetic with <a class="reference external" href="http://docs.python.org/library/datetime.html#datetime.time" title="(in Python v2.7)"><tt class="xref py py-class docutils literal"><span class="pre">datetime.time</span></tt></a>.  Only with
 <a class="reference external" href="http://docs.python.org/library/datetime.html#datetime.datetime" title="(in Python v2.7)"><tt class="xref py py-class docutils literal"><span class="pre">datetime.datetime</span></tt></a>.  Now, there are good reasons for this:  &#8220;What time
@@ -76,7 +74,7 @@ feels like a million years!&#8221;</p>
 <p>Nope, only 8 hours, how strange.  Anyway, please use this module.  It will
 be convenient.  But don&#8217;t use it when talking about concrete time, time in
 a particular place, or anything like that.  In fact, it doesn&#8217;t even notice
-tzinfo objects right now.  Good luck.</p>
+<a class="reference external" href="http://docs.python.org/library/datetime.html#datetime.tzinfo" title="(in Python v2.7)"><tt class="xref py py-class docutils literal"><span class="pre">datetime.tzinfo</span></tt></a> objects right now.  Good luck.</p>
 <dl class="class">
 <dt id="nptime.nptime">
 <em class="property">class </em><tt class="descclassname">nptime.</tt><tt class="descname">nptime</tt><a class="headerlink" href="#nptime.nptime" title="Permalink to this definition">¶</a></dt>
@@ -85,9 +83,11 @@ tzinfo objects right now.  Good luck.</p>
 but with <cite>nptime</cite> you can:</p>
 <ul class="simple">
 <li>Add a <a class="reference external" href="http://docs.python.org/library/datetime.html#datetime.timedelta" title="(in Python v2.7)"><tt class="xref py py-class docutils literal"><span class="pre">datetime.timedelta</span></tt></a> to an <a class="reference internal" href="#module-nptime" title="nptime"><tt class="xref py py-class docutils literal"><span class="pre">nptime</span></tt></a> (commutative)</li>
-<li>Subtract a <cite>timedelta</cite> from an <cite>nptime</cite></li>
-<li>Subtract an <cite>nptime</cite> from another <cite>nptime</cite></li>
+<li>Subtract a <tt class="docutils literal"><span class="pre">timedelta</span></tt> from an <tt class="docutils literal"><span class="pre">nptime</span></tt></li>
+<li>Subtract an <tt class="docutils literal"><span class="pre">nptime</span></tt> from another <tt class="docutils literal"><span class="pre">nptime</span></tt></li>
 </ul>
+<p>You can use the class methods <a class="reference internal" href="#nptime.nptime.from_timedelta" title="nptime.nptime.from_timedelta"><tt class="xref py py-func docutils literal"><span class="pre">from_timedelta()</span></tt></a> and <a class="reference internal" href="#nptime.nptime.from_time" title="nptime.nptime.from_time"><tt class="xref py py-func docutils literal"><span class="pre">from_time()</span></tt></a> to
+construct an <tt class="docutils literal"><span class="pre">nptime</span></tt> from those <tt class="docutils literal"><span class="pre">datetime</span></tt> classes.</p>
 <dl class="classmethod">
 <dt id="nptime.nptime.from_time">
 <em class="property">classmethod </em><tt class="descname">from_time</tt><big>(</big><em>other</em><big>)</big><a class="headerlink" href="#nptime.nptime.from_time" title="Permalink to this definition">¶</a></dt>
@@ -95,19 +95,19 @@ but with <cite>nptime</cite> you can:</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
 <p class="last">This <em>ignores</em> the <a class="reference external" href="http://docs.python.org/library/datetime.html#datetime.tzinfo" title="(in Python v2.7)"><tt class="xref py py-class docutils literal"><span class="pre">datetime.tzinfo</span></tt></a> that may be part
-of the <cite>time</cite> object.</p>
+of the <tt class="docutils literal"><span class="pre">time</span></tt> object.</p>
 </div>
 </dd></dl>
 
 <dl class="classmethod">
 <dt id="nptime.nptime.from_timedelta">
 <em class="property">classmethod </em><tt class="descname">from_timedelta</tt><big>(</big><em>other</em><big>)</big><a class="headerlink" href="#nptime.nptime.from_timedelta" title="Permalink to this definition">¶</a></dt>
-<dd><p>Construct an <a class="reference internal" href="#module-nptime" title="nptime"><tt class="xref py py-class docutils literal"><span class="pre">nptime</span></tt></a> object from a <a class="reference external" href="http://docs.python.org/library/datetime.html#datetime.timedelta" title="(in Python v2.7)"><tt class="xref py py-class docutils literal"><span class="pre">datetime.timedelta</span></tt></a></p>
+<dd><p>Construct an <a class="reference internal" href="#module-nptime" title="nptime"><tt class="xref py py-class docutils literal"><span class="pre">nptime</span></tt></a> object from a <a class="reference external" href="http://docs.python.org/library/datetime.html#datetime.timedelta" title="(in Python v2.7)"><tt class="xref py py-class docutils literal"><span class="pre">datetime.timedelta</span></tt></a>.</p>
+<p>The <tt class="docutils literal"><span class="pre">timedelta</span></tt> is taken to be the amount of time since midnight.</p>
 </dd></dl>
 
 </dd></dl>
 
-</div>
 </div>
 
 

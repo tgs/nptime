@@ -7,7 +7,7 @@ setup(
         author = 'Thomas Grenfell Smith',
         author_email = 'thomathom@gmail.com',
         url = 'https://github.com/tgs/nptime',
-        description = 'Replacement for datetime.time, allows time arithmetic',
+        description = 'Extends datetime.time, allowing time arithmetic',
         long_description = open('README.rst').read(),
         license = 'LICENSE.txt',
         keywords = 'time datetime timedelta',

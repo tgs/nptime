@@ -1,0 +1,2 @@
+include test_nptime.py
+include LICENSE.txt

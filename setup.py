@@ -13,6 +13,7 @@ setup(
         keywords = 'time datetime timedelta',
         py_modules = ['nptime'],
 
+        test_suite = 'nose.collector',
         tests_require = ['Nose'],
         )
 

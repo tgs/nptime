@@ -1,5 +1,6 @@
+
 Non-Pedantic Time
-=================
+*****************
 
 Python's ``datetime`` module has many uses, but it has a difficulty:
 you can't do any arithmetic with ``datetime.time``.  Only with
@@ -38,5 +39,5 @@ datetime.timedelta(0, 28800)
 Nope, only 8 hours, how strange.  Anyway, please use this module.  It
 will be convenient.  But don't use it when talking about concrete
 time, time in a particular place, or anything like that.  In fact, it
-doesn't even notice tzinfo objects right now.  Good luck.
+doesn't even notice ``datetime.tzinfo`` objects right now.  Good luck.
 

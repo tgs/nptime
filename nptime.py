@@ -40,7 +40,7 @@ datetime.timedelta(0, 28800)
 Nope, only 8 hours, how strange.  Anyway, please use this module.  It will
 be convenient.  But don't use it when talking about concrete time, time in
 a particular place, or anything like that.  In fact, it doesn't even notice
-tzinfo objects right now.  Good luck.
+:class:`datetime.tzinfo` objects right now.  Good luck.
 
 """
 
@@ -54,8 +54,11 @@ class nptime(time):
     but with `nptime` you can:
 
     * Add a :class:`datetime.timedelta` to an :class:`nptime` (commutative)
-    * Subtract a `timedelta` from an `nptime`
-    * Subtract an `nptime` from another `nptime`
+    * Subtract a ``timedelta`` from an ``nptime``
+    * Subtract an ``nptime`` from another ``nptime``
+
+    You can use the class methods :func:`from_timedelta` and :func:`from_time` to
+    construct an ``nptime`` from those ``datetime`` classes.
     """
 
     _std_date = date(year=1000, month=1, day=1)
@@ -66,13 +69,15 @@ class nptime(time):
         
         .. note::
             This *ignores* the :class:`datetime.tzinfo` that may be part
-            of the `time` object.
+            of the ``time`` object.
         """
         return cls(other.hour, other.minute, other.second, other.microsecond)
 
     @classmethod
     def from_timedelta(cls, other):
-        """Construct an :class:`nptime` object from a :class:`datetime.timedelta`"""
+        """Construct an :class:`nptime` object from a :class:`datetime.timedelta`.
+        
+        The ``timedelta`` is taken to be the amount of time since midnight."""
         return cls() + other
 
     def _to_timedelta(self):

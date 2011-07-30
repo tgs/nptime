@@ -60,7 +60,7 @@ from datetime import *
 
 class nptime(time):
     """nptime - a non-pedantic time object
-    
+
     Inherits from :class:`datetime.time`.  You can't do arithmetic with that class,
     but with ``nptime`` you can:
 
@@ -84,7 +84,7 @@ class nptime(time):
     @classmethod
     def from_time(cls, other):
         """Construct an :class:`nptime` object from a :class:`datetime.time`
-        
+
         .. note::
             This *ignores* the :class:`datetime.tzinfo` that may be part
             of the ``time`` object.
@@ -94,7 +94,7 @@ class nptime(time):
     @classmethod
     def from_timedelta(cls, other):
         """Construct an :class:`nptime` object from a :class:`datetime.timedelta`.
-        
+
         The ``timedelta`` is taken to be the amount of time since midnight."""
         return cls() + other
 
@@ -123,8 +123,6 @@ class nptime(time):
             diff = self.to_timedelta() - other
 
         return diff
-            
-        
 
 
 

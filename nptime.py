@@ -83,7 +83,10 @@ class nptime(time):
         The ``timedelta`` is taken to be the amount of time since midnight."""
         return cls() + other
 
-    def _to_timedelta(self):
+    def to_timedelta(self):
+        """Construct a :class:`timedelta` object from an :class:`nptime`.  The
+        timedelta gives the number of seconds (and microseconds) since
+        midnight."""
         return timedelta(hours=self.hour, minutes=self.minute,
                 seconds=self.second, microseconds=self.microsecond)
 
@@ -98,9 +101,9 @@ class nptime(time):
 
     def __sub__(self, other):
         if isinstance(other, self.__class__):
-            diff = self._to_timedelta() - other._to_timedelta()
+            diff = self.to_timedelta() - other.to_timedelta()
         else:
-            diff = self._to_timedelta() - other
+            diff = self.to_timedelta() - other
 
         return diff
             

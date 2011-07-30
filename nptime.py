@@ -8,9 +8,9 @@ Python's :mod:`datetime` module has many uses, but it has a difficulty: you
 can't do any arithmetic with :class:`datetime.time`.  Only with
 :class:`datetime.datetime`.  Now, there are good reasons for this:  "What time
 will it be, 24 hours from now" has a lot of corner cases, including daylight
-savings time, leap seconds, historical timezone changes, leap years, and so on.
-But sometimes you really *do* need the simple case.  Sometimes the perfect is
-the enemy of the good.  And that's why you have this module.  This module will
+savings time, leap seconds, historical timezone changes, years, and so on.  But
+sometimes you really *do* need the simple case.  Sometimes the perfect is the
+enemy of the good.  And that's why you have this module.  This module will
 allow you to cocoon yourself in the comforting illusion that, in 24 hours, it
 will be the same time as it is right now.
 
@@ -21,12 +21,18 @@ comes 1 day and 36 minutes after 12:24 pm?" and it will let you know: 1:00 pm.
 How lovely!
 
 >>> from nptime import nptime
->>> from datetime import timedelta
+>>> from datetime import timedelta, date, datetime
 >>> afternoon = nptime(12, 24) + timedelta(days=1, minutes=36)
 >>> afternoon
 nptime(13, 0)
 >>> str(afternoon)
 '13:00:00'
+
+Maybe we're talking about the afternoon of Guido van Rossum's birthday.  Lucky,
+we can combine ``nptime`` objects with ``date`` objects:
+
+>>> datetime.combine(date(1956, 1, 31), afternoon)
+datetime.datetime(1956, 1, 31, 13, 0, 0)
 
 You can also ask "How long is it between 9:00 AM and 5:00 PM?  It sure
 feels like a million years!"
@@ -42,8 +48,10 @@ be convenient.  But don't use it when talking about concrete time, time in
 a particular place, or anything like that.  In fact, it doesn't even notice
 :class:`datetime.tzinfo` objects right now.  Good luck.
 
-.. note:: 
-    You can find the newest version at https://github.com/tgs/nptime .  You can find online documentation at http://tgs.github.com/nptime/ .
+.. note::
+    You can find the newest version at https://github.com/tgs/nptime .  You can
+    find online documentation at http://tgs.github.com/nptime/ .  The package
+    is available for download from PyPi:  `easy_install nptime`
 
 """
 
@@ -62,7 +70,14 @@ class nptime(time):
 
     You can use the class methods :func:`from_timedelta` and :func:`from_time` to
     construct an ``nptime`` from those ``datetime`` classes.
-    """
+
+    I can't figure out a reason you'd want to add two times together without
+    using ``timedelta`` objects, but if someone requests that, I'm happy to
+    include it.
+
+    ``nptime`` is `naive` about time zones.  I think this is the only way that
+    makes sense, since days are only 24 hours long in an abstract sense.  But
+    if you want to see a different system, pull requests are welcome..."""
 
     _std_date = date(year=1000, month=1, day=1)
 
@@ -97,9 +112,11 @@ class nptime(time):
         return nptime.from_time(sum.time())
 
     def __radd__(self, other):
+        """Add timedelta and nptime"""
         return self + other
 
     def __sub__(self, other):
+        """Subtract timedelta or nptime from nptime"""
         if isinstance(other, self.__class__):
             diff = self.to_timedelta() - other.to_timedelta()
         else:

@@ -8,15 +8,15 @@ Python's :mod:`datetime` module has many uses, but it has a difficulty: you
 can't do any arithmetic with :class:`datetime.time`.  Only with
 :class:`datetime.datetime`.  Now, there are good reasons for this:  "What time
 will it be, 24 hours from now" has a lot of corner cases, including daylight
-savings time, leap seconds, historical timezone changes, years, and so on.  But
+savings time, leap seconds, historical timezone changes, and so on.  But
 sometimes you really *do* need the simple case.  Sometimes the perfect is the
-enemy of the good.  And that's why you have this module.  This module will
-allow you to cocoon yourself in the comforting illusion that, in 24 hours, it
-will be the same time as it is right now.
+enemy of the good.  And that's why you have this module.  This module will allow
+you to cocoon yourself in the comforting illusion that, in 24 hours, it will be
+the same time as it is right now.
 
 And what freedom this illusion gives you!  You can add a
-:class:`datetime.timedelta` object to an :mod:`nptime` object, and it works!
-It will cycle around 24 hours, like modular arithmetic.  You can ask "what time
+:class:`datetime.timedelta` object to an :mod:`nptime` object, and it works! It
+will cycle around 24 hours, like modular arithmetic.  You can ask "what time
 comes 1 day and 36 minutes after 12:24 pm?" and it will let you know: 1:00 pm.
 How lovely!
 
@@ -61,15 +61,20 @@ from datetime import *
 class nptime(time):
     """nptime - a non-pedantic time object
 
-    Inherits from :class:`datetime.time`.  You can't do arithmetic with that class,
-    but with ``nptime`` you can:
+    Inherits from :class:`datetime.time`.  You can't do arithmetic with that
+    class, but with ``nptime`` you can:
 
-    * Add a :class:`datetime.timedelta` to an :class:`nptime` (commutative)
-    * Subtract a ``timedelta`` from an ``nptime``
-    * Subtract an ``nptime`` from another ``nptime``
+    * Add a :class:`datetime.timedelta` to an :class:`nptime` (commutative),
+        resulting in another ``nptime``
+    * Subtract a ``timedelta`` from an ``nptime``, resulting in a 
+        ``timedelta``
+    * Subtract an ``nptime`` from another ``nptime``, resulting in a 
+        ``timedelta``
 
-    You can use the class methods :func:`from_timedelta` and :func:`from_time` to
-    construct an ``nptime`` from those ``datetime`` classes.
+    You can use the class methods :func:`from_timedelta` and :func:`from_time`
+    to construct an ``nptime`` from those ``datetime`` classes.  You can use the
+    :func:`to_timedelta` instance method to construct a ``timedelta`` from an
+    ``nptime``.
 
     I can't figure out a reason you'd want to add two times together without
     using ``timedelta`` objects, but if someone requests that, I'm happy to
@@ -106,7 +111,7 @@ class nptime(time):
                 seconds=self.second, microseconds=self.microsecond)
 
     def __add__(self, other):
-        """Add nptime and timedelta"""
+        """Add nptime and timedelta, returning an nptime"""
         self_dt = datetime.combine(self._std_date, self)
         sum = self_dt + other
         return nptime.from_time(sum.time())
@@ -116,7 +121,7 @@ class nptime(time):
         return self + other
 
     def __sub__(self, other):
-        """Subtract timedelta or nptime from nptime"""
+        """Subtract timedelta or nptime from nptime, returning a timedelta"""
         if isinstance(other, self.__class__):
             diff = self.to_timedelta() - other.to_timedelta()
         else:

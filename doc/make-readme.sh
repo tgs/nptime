@@ -1,4 +1,8 @@
 #!/bin/bash
+# Generate a README.rst file in the root directory of the project.
+
+# The README is generated using Sphinx, from the documentation included inline in nptime.py.
+# The class and method level documentation isn't included in the README.
 
 set -ev
 

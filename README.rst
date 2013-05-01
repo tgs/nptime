@@ -2,9 +2,9 @@
 Non-Pedantic Time
 *****************
 
-Python's ``datetime`` module has many uses, but it has a difficulty:
-you can't do any arithmetic with ``datetime.time``.  Only with
-``datetime.datetime``.  Now, there are good reasons for this:  "What
+Python's "datetime" module has many uses, but it has a difficulty: you
+can't do any arithmetic with "datetime.time".  Only with
+"datetime.datetime".  Now, there are good reasons for this:  "What
 time will it be, 24 hours from now" has a lot of corner cases,
 including daylight savings time, leap seconds, historical timezone
 changes, and so on.  But sometimes you really *do* need the simple
@@ -14,8 +14,8 @@ in the comforting illusion that, in 24 hours, it will be the same time
 as it is right now.
 
 And what freedom this illusion gives you!  You can add a
-``datetime.timedelta`` object to an ``nptime`` object, and it works!
-It will cycle around 24 hours, like modular arithmetic.  You can ask
+"datetime.timedelta" object to an "nptime" object, and it works! It
+will cycle around 24 hours, like modular arithmetic.  You can ask
 "what time comes 1 day and 36 minutes after 12:24 pm?" and it will let
 you know: 1:00 pm. How lovely!
 
@@ -28,8 +28,7 @@ nptime(13, 0)
 '13:00:00'
 
 Maybe we're talking about the afternoon of Guido van Rossum's
-birthday.  Lucky, we can combine ``nptime`` objects with ``date``
-objects:
+birthday.  Lucky, we can combine "nptime" objects with "date" objects:
 
 >>> datetime.combine(date(1956, 1, 31), afternoon)
 datetime.datetime(1956, 1, 31, 13, 0, 0)
@@ -46,10 +45,10 @@ datetime.timedelta(0, 28800)
 Nope, only 8 hours, how strange.  Anyway, please use this module.  It
 will be convenient.  But don't use it when talking about concrete
 time, time in a particular place, or anything like that.  In fact, it
-doesn't even notice ``datetime.tzinfo`` objects right now.  Good luck.
+doesn't even notice "datetime.tzinfo" objects right now.  Good luck.
 
 Note: You can find the newest version at https://github.com/tgs/nptime .
   You can find online documentation at http://tgs.github.com/nptime/ .
   The package is available for download from PyPi:  *easy_install
-  nptime*
+  nptime*.   This software is licensed under the 3-clause BSD License.
 

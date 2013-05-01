@@ -51,7 +51,9 @@ a particular place, or anything like that.  In fact, it doesn't even notice
 .. note::
     You can find the newest version at https://github.com/tgs/nptime .  You can
     find online documentation at http://tgs.github.com/nptime/ .  The package
-    is available for download from PyPi:  `easy_install nptime`
+    is available for download from PyPi:  `easy_install nptime`.  
+    This software is licensed under the `3-clause BSD License
+    <https://raw.github.com/tgs/nptime/master/LICENSE.txt>`_.
 
 """
 

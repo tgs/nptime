@@ -32,7 +32,7 @@ Maybe we're talking about the afternoon of Guido van Rossum's birthday.  Lucky,
 we can combine ``nptime`` objects with ``date`` objects:
 
 >>> datetime.combine(date(1956, 1, 31), afternoon)
-datetime.datetime(1956, 1, 31, 13, 0, 0)
+datetime.datetime(1956, 1, 31, 13, 0)
 
 You can also ask "How long is it between 9:00 AM and 5:00 PM?  It sure
 feels like a million years!"
@@ -40,7 +40,7 @@ feels like a million years!"
 >>> workday = nptime(hour=17) - nptime(hour=9)
 >>> workday
 datetime.timedelta(0, 28800)
->>> print workday
+>>> print(workday)
 8:00:00
 
 Nope, only 8 hours, how strange.  Anyway, please use this module.  It will

@@ -8,7 +8,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>nptime 0.3.1dev1 documentation</title>
+    <title>nptime 0.4.0 documentation</title>
     
     <link rel="stylesheet" href="_static/default.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
@@ -16,7 +16,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '',
-        VERSION:     '0.3.1dev1',
+        VERSION:     '0.4.0',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -31,7 +31,7 @@
     <div class="related">
       <h3>Navigation</h3>
       <ul>
-        <li><a href="index.html#document-index">nptime 0.3.1dev1 documentation</a> &raquo;</li> 
+        <li><a href="index.html#document-index">nptime 0.4.0 documentation</a> &raquo;</li> 
       </ul>
     </div>  
 
@@ -68,7 +68,7 @@ How lovely!</p>
 <p>Maybe we&#8217;re talking about the afternoon of Guido van Rossum&#8217;s birthday.  Lucky,
 we can combine <tt class="docutils literal"><span class="pre">nptime</span></tt> objects with <tt class="docutils literal"><span class="pre">date</span></tt> objects:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">datetime</span><span class="o">.</span><span class="n">combine</span><span class="p">(</span><span class="n">date</span><span class="p">(</span><span class="mi">1956</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">31</span><span class="p">),</span> <span class="n">afternoon</span><span class="p">)</span>
-<span class="go">datetime.datetime(1956, 1, 31, 13, 0, 0)</span>
+<span class="go">datetime.datetime(1956, 1, 31, 13, 0)</span>
 </pre></div>
 </div>
 <p>You can also ask &#8220;How long is it between 9:00 AM and 5:00 PM?  It sure
@@ -76,7 +76,7 @@ feels like a million years!&#8221;</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">workday</span> <span class="o">=</span> <span class="n">nptime</span><span class="p">(</span><span class="n">hour</span><span class="o">=</span><span class="mi">17</span><span class="p">)</span> <span class="o">-</span> <span class="n">nptime</span><span class="p">(</span><span class="n">hour</span><span class="o">=</span><span class="mi">9</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">workday</span>
 <span class="go">datetime.timedelta(0, 28800)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="n">workday</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span><span class="p">(</span><span class="n">workday</span><span class="p">)</span>
 <span class="go">8:00:00</span>
 </pre></div>
 </div>
@@ -183,11 +183,11 @@ midnight.</p>
     <div class="related">
       <h3>Navigation</h3>
       <ul>
-        <li><a href="index.html#document-index">nptime 0.3.1dev1 documentation</a> &raquo;</li> 
+        <li><a href="index.html#document-index">nptime 0.4.0 documentation</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">
-        &copy; Copyright 2011, Thomas Grenfell Smith.
+        &copy; Copyright 2013, Thomas Grenfell Smith.
       Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
     </div>
   </body>

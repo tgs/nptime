@@ -116,7 +116,7 @@ class nptime(time):
         """Add nptime and timedelta, returning an nptime"""
         self_dt = datetime.combine(self._std_date, self)
         sum = self_dt + other
-        return nptime.from_time(sum.time())
+        return self.from_time(sum.time())
 
     def __radd__(self, other):
         """Add timedelta and nptime"""

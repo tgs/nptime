@@ -31,10 +31,14 @@ def test_subtract():
     t1 = nptime(minute=30)
     t2 = nptime(minute=31)
 
+    # There's one minute between those times.
     assert_equal(t2 - t1, timedelta(seconds=60))
 
-    assert_equal(t1 - (t2 - t1), timedelta(minutes=29))
+    # If you take the interval between the times, and subtract it from one, you
+    # get the other.
+    assert_equal(t2 - (t2 - t1), t1)
 
+    # Subtraction should be anticommutative
     assert_equal(t2 - t1, -(t1 - t2))
 
 

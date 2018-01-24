@@ -123,14 +123,17 @@ class nptime(time):
         return self + other
 
     def __sub__(self, other):
-        """Subtract timedelta or nptime from nptime, returning a timedelta"""
+        """
+        Subtract timedelta or nptime from nptime.
+
+        You can subtract two nptimes from each other, giving
+        the timedelta between them.  You can also subtract
+        a timedelta from an nptime, giving an earlier nptime.
+        """
         if isinstance(other, self.__class__):
-            diff = self.to_timedelta() - other.to_timedelta()
+            # Two nptimes, so find the delta between them
+            return self.to_timedelta() - other.to_timedelta()
         else:
-            diff = self.to_timedelta() - other
-
-        return diff
-
-
-
+            # Assume the other is a timedelta; delegate to adding
+            return self + (-other)
 

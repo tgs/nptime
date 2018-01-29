@@ -68,8 +68,8 @@ class nptime(time):
 
     * Add a :class:`datetime.timedelta` to an :class:`nptime` (commutative),
         resulting in another ``nptime``
-    * Subtract a ``timedelta`` from an ``nptime``, resulting in a 
-        ``timedelta``
+    * Subtract a ``timedelta`` from an ``nptime``, resulting in an
+        ``nptime``
     * Subtract an ``nptime`` from another ``nptime``, resulting in a 
         ``timedelta``
 
